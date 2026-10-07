@@ -5,3 +5,4 @@ Production environment configuration
 Develop environment configuration
 Remote Git and GitHub training
 This is the test for git diff
+Change made directly on GitHub

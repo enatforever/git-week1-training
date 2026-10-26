@@ -1,0 +1,30 @@
+
+name: Git Training CI
+
+on:
+  push:
+    branches:
+      - develop
+      - practice/github-actions
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  validate:
+    name: Validate repository
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Verify Git training files
+        run: |
+          echo "Checking repository files..."
+          test -f README.md
+          echo "README.md exists"
+
+      - name: Show commit information
+        run: git log -1 --oneline
+

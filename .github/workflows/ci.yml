@@ -19,11 +19,18 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Verify Git training files
+      - name: Verify required files
         run: |
-          echo "Checking repository files..."
           test -f README.md
           echo "README.md exists"
+          test -f .github/workflows/ci.yml
+          echo "Workflow file exists"
+
+      - name: Validate application status
+        run: |
+          test -f app-status.txt
+          grep -q '^STATUS=OK$' app-status.txt
+          echo "Application status is OK"
 
       - name: Show commit information
         run: git log -1 --oneline
